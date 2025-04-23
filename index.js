@@ -10,7 +10,6 @@ const io = new Server(server, {
   cors: {
     origin: "*",
     credentials: true,
-
   }
 });
 
@@ -37,6 +36,6 @@ io.on("connection", (socket) => {
 });
 
 
-server.listen(3000, () => {
+server.listen(5000, () => {
   console.log("server running!");
 });
