@@ -3,13 +3,17 @@
   "version": "0.0.1",
   "description": "My first socket.io app",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --env-file=.env index"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
     "express": "^5.1.0",
+    "mongodb": "^6.16.0",
     "socket.io": "^4.8.1"
   }
 }
