@@ -76,9 +76,13 @@ io.on("connection", async (socket) => {
   })
 
   socket.on('removeShape', (shape) => {
-    io.to(campaign.broadcast('removeShape', shape));
+    io.to(campaign).broadcast('removeShape', shape);
 
     //TODO: call mongo, remove shape
+  })
+
+  socket.on('roll', (roll) => {
+    io.to(campaign).broadcast('roll', roll);
   })
 
 
