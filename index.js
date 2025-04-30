@@ -69,6 +69,10 @@ io.on("connection", async (socket) => {
     //TODO: call mongo. update position
   })
 
+  socket.on('moveMarker', (markerObject) => {
+    io.to(campaign).emit('moveMarker', markerObject);
+  })
+
   socket.on('createShape', (shape) => {
     io.to(campaign).broadcast('createShape', shape);
 
@@ -90,6 +94,6 @@ io.on("connection", async (socket) => {
   
 });
 
-server.listen(5000, () => {
+server.listen(5001, () => {
   console.log("server running!");
 });
