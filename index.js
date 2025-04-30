@@ -28,6 +28,7 @@ io.use(async (socket, next) => {
   try{
     const token = socket.handshake.auth.token;
     const campaign = socket.handshake.auth.campaign;
+    console.log()
     if (!token) {
       return next(new Error("authentication error: Token missing."))
     }
@@ -64,7 +65,7 @@ io.on("connection", async (socket) => {
 
   //dragable waypoint moved
   socket.on('dragableMoved', (pos) => {
-    io.to(campaign).broadcast('dragableMoved', pos);
+    io.to(campaign).emit('dragableMoved', pos);
     //pos {x,y,id, (character, monster, object)}
     //TODO: call mongo. update position
   })
@@ -74,19 +75,20 @@ io.on("connection", async (socket) => {
   })
 
   socket.on('createShape', (shape) => {
-    io.to(campaign).broadcast('createShape', shape);
+    io.to(campaign).emit('createShape', shape);
 
     //TODO: call mongo, add shape
   })
 
   socket.on('removeShape', (shape) => {
-    io.to(campaign).broadcast('removeShape', shape);
+    io.to(campaign).emit('removeShape', shape);
 
     //TODO: call mongo, remove shape
   })
 
   socket.on('roll', (roll) => {
-    io.to(campaign).broadcast('roll', roll);
+    console.log(roll);
+    io.to(campaign).emit('roll', roll);
   })
 
 
