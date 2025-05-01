@@ -85,11 +85,26 @@ io.on("connection", async (socket) => {
     //TODO: call mongo, remove shape
   })
 
+  socket.on('changeMap', (mapID) => {
+    io.to(campaign).emit('changeMap', mapID);
+  })
+
   socket.on('roll', (roll) => {
     io.to(campaign).broadcast('roll', roll);
   })
 
+  socket.on('rollNumberedDice', (num, rolls) => {
+    io.to(campaign).emit('rollNumberedDice', num, rolls);
+  })
 
+  socket.on('abilityRoll', (ability, bonud, rollType) => {
+    io.to(campaign).emit('abilityRoll', ability, bonud, rollType);
+  })
+
+  // Monster Management
+  socket.on("addMonster", (monsterID, markerType) => {
+    io.to(campaign).emit("addMonster", monsterID, markerType);
+  })
 
   
 });
