@@ -35,7 +35,7 @@ import express from "express";
   const server = createServer(app);
   const io = new Server(server, {
     cors: {
-      origin: "*",
+      origin: "https://guild-table.98.148.238.215.sslip.io/",
       credentials: true,
     }
   });
